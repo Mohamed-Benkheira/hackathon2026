@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Concerns\BelongsToInstitute;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,6 +12,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
+    use BelongsToInstitute;
 
 
     protected $fillable = [
@@ -47,5 +49,9 @@ class User extends Authenticatable
     public function isTeacher(): bool
     {
         return $this->role === 'teacher';
+    }
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class);
     }
 }

@@ -19,6 +19,13 @@ return new class extends Migration {
 
             $table->index('capacity');
             $table->index('is_active');
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

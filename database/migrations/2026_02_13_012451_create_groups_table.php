@@ -17,6 +17,13 @@ return new class extends Migration {
 
             $table->unique(['class_id', 'name']);
             $table->index('class_id');
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

@@ -23,6 +23,13 @@ return new class extends Migration {
 
             $table->unique(['student_id', 'module_id']);
             $table->index(['student_id', 'module_id']);
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

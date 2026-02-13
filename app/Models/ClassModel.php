@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToInstitute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,8 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ClassModel extends Model
 {
     use HasFactory;
+    use BelongsToInstitute;
     protected $table = 'classes';
-
     protected $fillable = [
         'specialty_id',
         'semester_number',

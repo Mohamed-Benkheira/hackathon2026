@@ -17,6 +17,11 @@ return new class extends Migration {
             $table->json('certificate_types')->nullable();
             $table->integer('duration_months')->nullable();
             $table->timestamps();
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
         });
     }
 

@@ -19,6 +19,13 @@ return new class extends Migration {
 
             $table->unique(['exam_session_id', 'module_id', 'group_id']);
             $table->index(['exam_session_id', 'group_id']);
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

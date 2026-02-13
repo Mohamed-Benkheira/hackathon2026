@@ -32,6 +32,13 @@ return new class extends Migration {
             $table->index(['group_id', 'formation_type']);
             $table->index('matricule');
             $table->index(['last_name_ar', 'first_name_ar']);
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

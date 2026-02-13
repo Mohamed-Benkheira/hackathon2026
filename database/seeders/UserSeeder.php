@@ -10,28 +10,12 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin user
-        User::create([
-            'name' => 'Admin CFPA',
-            'email' => 'admin@cfpa.dz',
-            'password' => Hash::make('password'),
-            'role' => 'admin',
-        ]);
-
-        // Teacher user
-        User::create([
-            'name' => 'Mohamed Benali',
-            'email' => 'teacher@cfpa.dz',
-            'password' => Hash::make('password'),
-            'role' => 'teacher',
-        ]);
-
-        // Student user
-        User::create([
-            'name' => 'Ahmed Bouzid',
-            'email' => 'student@cfpa.dz',
-            'password' => Hash::make('password'),
-            'role' => 'student',
-        ]);
+        // Extra institute users
+        \App\Models\Institute::all()->each(function ($institute) {
+            User::factory(2)->create([
+                'institute_id' => $institute->id,
+                'role' => fake()->randomElement(['teacher', 'student']),
+            ]);
+        });
     }
 }

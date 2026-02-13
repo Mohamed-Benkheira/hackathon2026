@@ -16,6 +16,13 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->index('exception_date');
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

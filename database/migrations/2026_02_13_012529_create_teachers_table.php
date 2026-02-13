@@ -17,6 +17,13 @@ return new class extends Migration {
             $table->string('email', 100)->nullable();
             $table->string('status', 20)->default('active');
             $table->timestamps();
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

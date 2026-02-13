@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\BelongsToInstitute;
 
 
 class GroupTeacher extends Model
 {
     use HasFactory;
+    use BelongsToInstitute;
 
     protected $fillable = [
         'group_id',

@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\BelongsToInstitute;
 
 class TimeSlot extends Model
 {
+    use BelongsToInstitute;
 
     use HasFactory;
 

@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Models\Concerns\BelongsToInstitute;
 
 class Module extends Model
 {
     use HasFactory;
+    use BelongsToInstitute;
 
 
     protected $fillable = [

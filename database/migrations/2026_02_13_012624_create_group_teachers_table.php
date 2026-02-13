@@ -18,6 +18,14 @@ return new class extends Migration {
             $table->unique(['group_id', 'teacher_id']);
             $table->index('group_id');
             $table->index('teacher_id');
+
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

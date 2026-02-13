@@ -15,6 +15,13 @@ return new class extends Migration {
             $table->date('end_date');
             $table->string('status', 20)->default('pending');
             $table->timestamps();
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

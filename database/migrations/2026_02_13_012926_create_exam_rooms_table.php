@@ -14,6 +14,13 @@ return new class extends Migration {
             $table->integer('seats_used');
 
             $table->unique(['exam_id', 'room_id']);
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 

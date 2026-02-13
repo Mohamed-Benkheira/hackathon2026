@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Concerns\BelongsToInstitute;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class WeeklyException extends Model
 {
+    use BelongsToInstitute;
 
     use HasFactory;
 

@@ -26,6 +26,13 @@ return new class extends Migration {
             $table->index(['group_id', 'day_of_week']);
             $table->index(['teacher_id', 'day_of_week', 'slot_number']);
             $table->index(['room_id', 'day_of_week', 'slot_number']);
+            $table->foreignId('institute_id')
+                ->nullable()
+                ->constrained('institutes')
+                ->cascadeOnDelete()
+                ->after('id');
+
+            $table->index(['institute_id']);
         });
     }
 
