@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name_ar');
             $table->string('name_fr');
-            $table->string('code', 10)->unique();
+            $table->string('code', 10);
             $table->enum('role', ['apprentice', 'presential', 'remote']);
 
             $table->json('certificate_types')->nullable();

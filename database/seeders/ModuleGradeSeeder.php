@@ -11,22 +11,33 @@ class ModuleGradeSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create grades for each student in their class modules
-        Student::with('group.class.modules')->chunk(100, function ($students) {
-            foreach ($students as $student) {
-                if (!$student->group || !$student->group->class)
-                    continue;
+        foreach (Student::all() as $student) {
+            $modules = Module::where('institute_id', $student->institute_id)
+                ->whereHas('class', function ($q) use ($student) {
+                    $q->whereHas('groups', function ($g) use ($student) {
+                        $g->where('id', $student->group_id);
+                    });
+                })
+                ->take(3)
+                ->get();
 
-                $modules = $student->group->class->modules;
+            foreach ($modules as $module) {
+                $c1 = rand(8, 20);
+                $c2 = rand(8, 20);
+                $exam = rand(8, 20);
+                $avg = ($c1 + $c2 + $exam) / 3;
 
-                foreach ($modules as $module) {
-                    ModuleGrade::factory()->create([
-                        'student_id' => $student->id,
-                        'module_id' => $module->id,
-                        'coefficient' => $module->coefficient,
-                    ]);
-                }
+                ModuleGrade::create([
+                    'institute_id' => $student->institute_id,
+                    'student_id' => $student->id,
+                    'module_id' => $module->id,
+                    'controle1' => $c1,
+                    'controle2' => $c2,
+                    'examen_final' => $exam,
+                    'coefficient' => $module->coefficient,
+                    'status' => $avg >= 10 ? 'validated' : 'fail',
+                ]);
             }
-        });
+        }
     }
 }
