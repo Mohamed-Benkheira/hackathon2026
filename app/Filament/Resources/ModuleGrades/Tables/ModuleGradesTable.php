@@ -14,9 +14,10 @@ class ModuleGradesTable
     {
         return $table
             ->columns([
-                TextColumn::make('student.id')
+                TextColumn::make('student.full_name_ar')
+                    ->label('Nom de l\'étudiant')
                     ->searchable(),
-                TextColumn::make('module.id')
+                TextColumn::make('module.name_ar')
                     ->searchable(),
                 TextColumn::make('controle1')
                     ->numeric()

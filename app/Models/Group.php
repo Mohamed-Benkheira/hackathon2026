@@ -45,6 +45,18 @@ class Group extends Model
             ->withTimestamps();
     }
 
+    public function modules()
+    {
+        return $this->hasManyThrough(
+            Module::class,
+            ClassModel::class,
+            'id',           // Foreign key on classes
+            'class_id',     // Foreign key on modules  
+            'class_id',     // Local key on groups
+            'id'            // Local key on classes
+        );
+    }
+
     public function weeklySessions(): HasMany
     {
         return $this->hasMany(WeeklySession::class);

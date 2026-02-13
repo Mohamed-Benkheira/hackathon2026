@@ -14,7 +14,15 @@ class GroupsTable
     {
         return $table
             ->columns([
-                TextColumn::make('class.id')
+                TextColumn::make('class.specialty.name_ar')
+                    ->label('Spécialité')
+                    ->sortable()
+                    ->searchable()
+                ,
+                // Class Column  
+                TextColumn::make('class.semester_number')
+                    ->label('Semester')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
@@ -23,7 +31,23 @@ class GroupsTable
                     ->sortable(),
                 TextColumn::make('current_students')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->badge()
+                    ->color(fn(string $state): string => match (true) {
+                        $state >= 30 => 'danger',
+                        $state >= 25 => 'warning',
+                        default => 'success',
+                    })
+                ,
+                TextColumn::make('availableSeats')
+                    ->label('Places Disponibles')
+                    ->getStateUsing(fn($record): int => $record->capacity - $record->current_students)
+                    ->badge()
+                    ->color(fn(string $state): string => match (true) {
+                        $state <= 0 => 'danger',
+                        $state <= 5 => 'warning',
+                        default => 'success',
+                    }),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

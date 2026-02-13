@@ -47,7 +47,10 @@ class GroupResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\StudentsRelationManager::class,
+            RelationManagers\TeachersRelationManager::class,
+            RelationManagers\ModulesRelationManager::class,
+
         ];
     }
 
@@ -57,6 +60,8 @@ class GroupResource extends Resource
             'index' => ListGroups::route('/'),
             'create' => CreateGroup::route('/create'),
             'edit' => EditGroup::route('/{record}/edit'),
+
+
         ];
     }
 }

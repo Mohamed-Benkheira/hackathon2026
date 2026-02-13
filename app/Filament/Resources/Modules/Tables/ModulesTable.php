@@ -14,7 +14,7 @@ class ModulesTable
     {
         return $table
             ->columns([
-                TextColumn::make('class.id')
+                TextColumn::make('class.specialty.name_ar')
                     ->searchable(),
                 TextColumn::make('code')
                     ->searchable(),

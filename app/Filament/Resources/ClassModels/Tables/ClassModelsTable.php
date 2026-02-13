@@ -15,7 +15,7 @@ class ClassModelsTable
     {
         return $table
             ->columns([
-                TextColumn::make('specialty.id')
+                TextColumn::make('specialty.name_ar')
                     ->searchable(),
                 TextColumn::make('semester_number')
                     ->numeric()

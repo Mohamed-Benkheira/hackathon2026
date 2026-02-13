@@ -15,7 +15,7 @@ class ClassModelForm
         return $schema
             ->components([
                 Select::make('specialty_id')
-                    ->relationship('specialty', 'id')
+                    ->relationship('specialty', 'name_ar')
                     ->required(),
                 TextInput::make('semester_number')
                     ->required()

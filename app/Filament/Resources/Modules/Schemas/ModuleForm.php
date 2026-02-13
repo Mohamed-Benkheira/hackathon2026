@@ -13,7 +13,14 @@ class ModuleForm
         return $schema
             ->components([
                 Select::make('class_id')
-                    ->relationship('class', 'id')
+                    ->label('Classe')
+                    ->relationship('class', 'name_ar')
+                    ->getOptionLabelFromRecordUsing(
+                        fn($record): string =>
+                        "{$record->specialty->name_ar} - {$record->name_ar} (S{$record->semester_number})"
+                    )
+                    ->searchable()
+                    ->preload()
                     ->required(),
                 TextInput::make('code')
                     ->required(),
