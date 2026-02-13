@@ -9,6 +9,7 @@ use App\Filament\Resources\GroupTeachers\Schemas\GroupTeacherForm;
 use App\Filament\Resources\GroupTeachers\Tables\GroupTeachersTable;
 use App\Models\GroupTeacher;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,7 +19,17 @@ class GroupTeacherResource extends Resource
 {
     protected static ?string $model = GroupTeacher::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-link';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Gestion des Personnes';
+
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $navigationLabel = 'Affectations';
+
+    protected static ?string $modelLabel = 'Affectation';
+
+    protected static ?string $pluralModelLabel = 'Affectations';
 
     public static function form(Schema $schema): Schema
     {

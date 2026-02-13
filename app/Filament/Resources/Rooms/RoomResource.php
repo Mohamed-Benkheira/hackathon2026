@@ -9,6 +9,7 @@ use App\Filament\Resources\Rooms\Schemas\RoomForm;
 use App\Filament\Resources\Rooms\Tables\RoomsTable;
 use App\Models\Room;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,7 +19,17 @@ class RoomResource extends Resource
 {
     protected static ?string $model = Room::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Infrastructure';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Salles';
+
+    protected static ?string $modelLabel = 'Salle';
+
+    protected static ?string $pluralModelLabel = 'Salles';
 
     public static function form(Schema $schema): Schema
     {

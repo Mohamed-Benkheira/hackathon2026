@@ -9,6 +9,7 @@ use App\Filament\Resources\Exams\Schemas\ExamForm;
 use App\Filament\Resources\Exams\Tables\ExamsTable;
 use App\Models\Exam;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,8 +19,17 @@ class ExamResource extends Resource
 {
     protected static ?string $model = Exam::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Examens';
+
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $navigationLabel = 'Examens';
+
+    protected static ?string $modelLabel = 'Examen';
+
+    protected static ?string $pluralModelLabel = 'Examens';
     public static function form(Schema $schema): Schema
     {
         return ExamForm::configure($schema);

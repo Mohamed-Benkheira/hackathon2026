@@ -9,6 +9,7 @@ use App\Filament\Resources\ExamSessions\Schemas\ExamSessionForm;
 use App\Filament\Resources\ExamSessions\Tables\ExamSessionsTable;
 use App\Models\ExamSession;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,8 +19,17 @@ class ExamSessionResource extends Resource
 {
     protected static ?string $model = ExamSession::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Examens';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Sessions';
+
+    protected static ?string $modelLabel = 'Session';
+
+    protected static ?string $pluralModelLabel = 'Sessions';
     public static function form(Schema $schema): Schema
     {
         return ExamSessionForm::configure($schema);

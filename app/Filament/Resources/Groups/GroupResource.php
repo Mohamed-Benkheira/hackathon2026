@@ -13,12 +13,26 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
+
 
 class GroupResource extends Resource
 {
     protected static ?string $model = Group::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Structure Académique';
+
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $navigationLabel = 'Groupes';
+
+    protected static ?string $modelLabel = 'Groupe';
+
+    protected static ?string $pluralModelLabel = 'Groupes';
+
+
 
     public static function form(Schema $schema): Schema
     {

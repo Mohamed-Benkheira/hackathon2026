@@ -29,7 +29,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Violet,      // Modern purple/violet for primary actions
+                'danger' => Color::Rose,         // Softer red for errors
+                'gray' => Color::Zinc,           // Modern neutral gray
+                'info' => Color::Cyan,           // Bright cyan for info
+                'success' => Color::Emerald,     // Fresh green for success
+                'warning' => Color::Amber,       // Keep amber for warnings
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -40,6 +45,15 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->navigationGroups([
+                'Structure Académique',
+                'Gestion des Personnes',
+                'Modules & Notes',
+                'Examens',
+                'Emploi du Temps',
+                'Infrastructure',
+                'Administration',
             ])
             ->middleware([
                 EncryptCookies::class,

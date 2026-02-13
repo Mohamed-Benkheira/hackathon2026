@@ -1,54 +1,25 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
-class ExamSession extends Model
-{
-    protected $fillable = [
-        'name',
-        'class_id',
-        'start_date',
-        'end_date',
-        'status',
-    ];
-
-    protected function casts(): array
+return new class extends Migration {
+    public function up(): void
     {
-        return [
-            'start_date' => 'date',
-            'end_date' => 'date',
-        ];
+        Schema::create('exam_sessions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->foreignId('class_id')->nullable()->constrained('classes')->onDelete('cascade');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('status', 20)->default('pending');
+            $table->timestamps();
+        });
     }
 
-    // Relationships
-    public function class(): BelongsTo
+    public function down(): void
     {
-        return $this->belongsTo(ClassModel::class, 'class_id');
+        Schema::dropIfExists('exam_sessions');
     }
-
-    public function timeSlots(): HasMany
-    {
-        return $this->hasMany(TimeSlot::class);
-    }
-
-    public function exams(): HasMany
-    {
-        return $this->hasMany(Exam::class);
-    }
-
-    // Scopes
-    public function scopePending($query)
-    {
-        return $query->where('status', 'pending');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->whereDate('start_date', '<=', now())
-            ->whereDate('end_date', '>=', now());
-    }
-}
+};

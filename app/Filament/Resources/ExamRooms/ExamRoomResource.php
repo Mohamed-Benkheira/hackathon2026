@@ -9,6 +9,7 @@ use App\Filament\Resources\ExamRooms\Schemas\ExamRoomForm;
 use App\Filament\Resources\ExamRooms\Tables\ExamRoomsTable;
 use App\Models\ExamRoom;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,8 +19,17 @@ class ExamRoomResource extends Resource
 {
     protected static ?string $model = ExamRoom::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-map-pin';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Examens';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationLabel = 'Salles d\'Examen';
+
+    protected static ?string $modelLabel = 'Salle d\'Examen';
+
+    protected static ?string $pluralModelLabel = 'Salles d\'Examen';
     public static function form(Schema $schema): Schema
     {
         return ExamRoomForm::configure($schema);

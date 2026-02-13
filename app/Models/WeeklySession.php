@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 class WeeklySession extends Model
 {
+    use HasFactory;
+
+
     protected $fillable = [
         'group_id',
         'module_id',
@@ -86,3 +92,5 @@ class WeeklySession extends Model
         return $query->where('teacher_id', $teacherId);
     }
 }
+
+

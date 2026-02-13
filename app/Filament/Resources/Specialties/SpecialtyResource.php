@@ -13,12 +13,22 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-
+use UnitEnum;
 class SpecialtyResource extends Resource
 {
     protected static ?string $model = Specialty::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static BackedEnum|string|null $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Structure Académique';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Spécialités';
+
+    protected static ?string $modelLabel = 'Spécialité';
+
+    protected static ?string $pluralModelLabel = 'Spécialités';
 
     public static function form(Schema $schema): Schema
     {

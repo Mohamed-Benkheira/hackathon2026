@@ -9,6 +9,7 @@ use App\Filament\Resources\Students\Schemas\StudentForm;
 use App\Filament\Resources\Students\Tables\StudentsTable;
 use App\Models\Student;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,7 +19,17 @@ class StudentResource extends Resource
 {
     protected static ?string $model = Student::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-identification';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Gestion des Personnes';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Étudiants';
+
+    protected static ?string $modelLabel = 'Étudiant';
+
+    protected static ?string $pluralModelLabel = 'Étudiants';
 
     public static function form(Schema $schema): Schema
     {

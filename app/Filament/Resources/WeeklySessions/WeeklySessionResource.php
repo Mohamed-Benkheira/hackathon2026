@@ -9,6 +9,7 @@ use App\Filament\Resources\WeeklySessions\Schemas\WeeklySessionForm;
 use App\Filament\Resources\WeeklySessions\Tables\WeeklySessionsTable;
 use App\Models\WeeklySession;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,7 +19,17 @@ class WeeklySessionResource extends Resource
 {
     protected static ?string $model = WeeklySession::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Emploi du Temps';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Sessions';
+
+    protected static ?string $modelLabel = 'Session';
+
+    protected static ?string $pluralModelLabel = 'Sessions';
 
     public static function form(Schema $schema): Schema
     {

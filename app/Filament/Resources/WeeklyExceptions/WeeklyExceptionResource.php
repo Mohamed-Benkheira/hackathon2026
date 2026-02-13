@@ -9,6 +9,7 @@ use App\Filament\Resources\WeeklyExceptions\Schemas\WeeklyExceptionForm;
 use App\Filament\Resources\WeeklyExceptions\Tables\WeeklyExceptionsTable;
 use App\Models\WeeklyException;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,8 +19,17 @@ class WeeklyExceptionResource extends Resource
 {
     protected static ?string $model = WeeklyException::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-exclamation-circle';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Emploi du Temps';
+
+    protected static ?int $navigationSort = 2;
+
+    protected static ?string $navigationLabel = 'Exceptions';
+
+    protected static ?string $modelLabel = 'Exception';
+
+    protected static ?string $pluralModelLabel = 'Exceptions';
     public static function form(Schema $schema): Schema
     {
         return WeeklyExceptionForm::configure($schema);
