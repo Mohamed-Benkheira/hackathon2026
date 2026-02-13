@@ -8,6 +8,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @property-read \App\Models\ExamSession|null $examSession
+ * @property-read \App\Models\Group|null $group
+ * @property-read \App\Models\Module|null $module
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Room> $rooms
+ * @property-read int|null $rooms_count
+ * @property-read \App\Models\TimeSlot|null $timeSlot
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Exam byDate($date)
+ * @method static \Database\Factories\ExamFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Exam newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Exam newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Exam query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Exam scheduled()
+ * @mixin \Eloquent
+ */
 class Exam extends Model
 {
     use HasFactory;

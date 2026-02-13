@@ -9,6 +9,41 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @property int $id
+ * @property int $student_id
+ * @property int $module_id
+ * @property numeric|null $controle1
+ * @property numeric|null $controle2
+ * @property numeric|null $examen_final
+ * @property numeric|null $moyenne_module
+ * @property int $coefficient
+ * @property numeric|null $moyenne_ponderee
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Module $module
+ * @property-read \App\Models\Student $student
+ * @method static \Database\Factories\ModuleGradeFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade failed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade passed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereCoefficient($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereControle1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereControle2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereExamenFinal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereMoyenneModule($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereMoyennePonderee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereStudentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ModuleGrade whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class ModuleGrade extends Model
 {
 

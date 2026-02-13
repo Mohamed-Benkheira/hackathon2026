@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property-read \App\Models\Exam|null $exam
+ * @property-read \App\Models\Room|null $room
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamRoom newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamRoom newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamRoom query()
+ * @mixin \Eloquent
+ */
 class ExamRoom extends Model
 {
     use HasFactory;

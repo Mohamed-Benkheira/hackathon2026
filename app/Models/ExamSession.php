@@ -8,6 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
+/**
+ * @property-read \App\Models\ClassModel|null $class
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Exam> $exams
+ * @property-read int|null $exams_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TimeSlot> $timeSlots
+ * @property-read int|null $time_slots_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamSession active()
+ * @method static \Database\Factories\ExamSessionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamSession newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamSession newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamSession pending()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ExamSession query()
+ * @mixin \Eloquent
+ */
 class ExamSession extends Model
 {
     use HasFactory;

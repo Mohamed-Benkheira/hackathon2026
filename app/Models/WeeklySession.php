@@ -9,6 +9,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\WeeklyException> $exceptions
+ * @property-read int|null $exceptions_count
+ * @property-read string $day_name
+ * @property-read \App\Models\Group|null $group
+ * @property-read \App\Models\Module|null $module
+ * @property-read \App\Models\Room|null $room
+ * @property-read \App\Models\Teacher|null $teacher
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession active()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession byDay(int $day)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession byTeacher(int $teacherId)
+ * @method static \Database\Factories\WeeklySessionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeeklySession query()
+ * @mixin \Eloquent
+ */
 class WeeklySession extends Model
 {
     use HasFactory;
