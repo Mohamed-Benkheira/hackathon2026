@@ -34,4 +34,17 @@ class Specialty extends Model
     {
         return $this->hasMany(ClassModel::class);
     }
+    public function students()
+    {
+        return $this->hasManyThrough(
+            Student::class,
+            ClassModel::class,
+            'specialty_id', // Foreign key on classes table
+            'group_id',     // Foreign key on students table
+            'id',           // Local key on specialties table
+            'id'            // Local key on classes table
+        )->join('groups', 'students.group_id', '=', 'groups.id')
+            ->join('classes', 'groups.class_id', '=', 'classes.id');
+    }
+
 }
