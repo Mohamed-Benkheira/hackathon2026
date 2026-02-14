@@ -55,4 +55,8 @@ class ExamSessionResource extends Resource
             'edit' => EditExamSession::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->role !== 'super_admin';
+    }
 }

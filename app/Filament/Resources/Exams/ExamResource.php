@@ -17,6 +17,11 @@ use Filament\Tables\Table;
 
 class ExamResource extends Resource
 {
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
     protected static ?string $model = Exam::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';

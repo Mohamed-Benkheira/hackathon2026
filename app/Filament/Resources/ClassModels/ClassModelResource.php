@@ -30,6 +30,11 @@ class ClassModelResource extends Resource
     protected static ?string $modelLabel = 'Classe';
 
     protected static ?string $pluralModelLabel = 'Classes';
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
 
     public static function form(Schema $schema): Schema
     {

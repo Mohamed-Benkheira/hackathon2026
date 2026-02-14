@@ -30,6 +30,13 @@ class ExamRoomResource extends Resource
     protected static ?string $modelLabel = 'Salle d\'Examen';
 
     protected static ?string $pluralModelLabel = 'Salles d\'Examen';
+
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ExamRoomForm::configure($schema);

@@ -55,4 +55,9 @@ class ModuleGradeResource extends Resource
             'edit' => EditModuleGrade::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->role !== 'super_admin';
+    }
+
 }

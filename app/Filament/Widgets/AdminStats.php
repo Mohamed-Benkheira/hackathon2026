@@ -21,4 +21,8 @@ class AdminStats extends BaseWidget
             Stat::make('Module grades', ModuleGrade::query()->count()),
         ];
     }
+    public static function canView(): bool
+    {
+        return auth()->user()->role === 'admin';
+    }
 }

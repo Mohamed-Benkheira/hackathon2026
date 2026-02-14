@@ -30,7 +30,11 @@ class WeeklySessionResource extends Resource
     protected static ?string $modelLabel = 'Session';
 
     protected static ?string $pluralModelLabel = 'Sessions';
-
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
     public static function form(Schema $schema): Schema
     {
         return WeeklySessionForm::configure($schema);

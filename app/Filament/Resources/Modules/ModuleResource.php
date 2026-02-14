@@ -47,6 +47,11 @@ class ModuleResource extends Resource
         ];
     }
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->role !== 'super_admin';
+    }
+
     public static function getPages(): array
     {
         return [

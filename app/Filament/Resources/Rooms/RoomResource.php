@@ -17,6 +17,12 @@ use Filament\Tables\Table;
 
 class RoomResource extends Resource
 {
+
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
     protected static ?string $model = Room::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';

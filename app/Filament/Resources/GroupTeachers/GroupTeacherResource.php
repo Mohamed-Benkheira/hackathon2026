@@ -47,6 +47,11 @@ class GroupTeacherResource extends Resource
             //
         ];
     }
+    public static function canViewAny(): bool
+    {
+        // Hide from Ministry (super_admin), show to institute admins
+        return auth()->user()->role !== 'super_admin';
+    }
 
     public static function getPages(): array
     {
