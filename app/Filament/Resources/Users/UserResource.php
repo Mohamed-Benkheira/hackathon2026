@@ -48,6 +48,11 @@ class UserResource extends Resource
         ];
     }
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()->role === 'super_admin';
+    }
+
     public static function getPages(): array
     {
         return [

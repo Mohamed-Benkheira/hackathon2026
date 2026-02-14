@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\DB;
 return new class extends Migration {
     public function up(): void
     {
-        DB::statement("ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'student', 'teacher', 'super_admin') NOT NULL DEFAULT 'admin'");
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('admin')->change();
+        });
     }
 
     public function down(): void
     {
-        DB::statement("ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'student', 'teacher') NOT NULL DEFAULT 'admin'");
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('admin')->change();
+        });
     }
 };
